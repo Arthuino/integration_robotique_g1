@@ -1,0 +1,2 @@
+motoman/motoman
+/mnt/c/Users/Arthuino/Integration_rob/integration_robotique_g1/catkin_ws/devel/.private/motoman/cmake.lock /mnt/c/Users/Arthuino/Integration_rob/integration_robotique_g1/catkin_ws/devel/./cmake.lock
