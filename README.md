@@ -1,9 +1,11 @@
 # integration_robotique_g1
 
-Requis :
---> Ubuntu 20
---> ROS noetic
---> package ros "ros-noetic-industrial-core"
+## setup  
+
+Requis :  
+--> Ubuntu 20  
+--> ROS noetic  
+--> package ros "ros-noetic-industrial-core"  
 
 source de ROS :
 
@@ -21,4 +23,12 @@ Build :
 
 ```bash
 catkin build
+```
+
+## launch
+
+test du urdf sur Rviz
+
+```bash
+roslaunch motoman_hc10_support test_hc10.launch
 ```
