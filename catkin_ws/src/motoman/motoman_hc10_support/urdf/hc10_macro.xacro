@@ -2,6 +2,13 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:macro name="motoman_hc10" params="prefix">
     <xacro:include filename="$(find motoman_resources)/urdf/common_materials.xacro"/>
+    <xacro:include filename="$(find motoman_resources)/urdf/kinect_camera.gazebo"/>
+    
+    <gazebo>
+	  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+	    <robotNamespace>/MYROBOT</robotNamespace>
+	  </plugin>
+	</gazebo>
 
     <!-- link list -->
     
@@ -139,6 +146,15 @@
 	   	<mass value="0.1"/>
 	   	<inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
 	</inertial>
+	
+	<link name="${prefix}camera_link">
+		<visual>
+			<geometry>
+				<box size="0.05 0.1 0.04"/>
+			</geometry>
+		</visual>
+	</link>
+	
     <!-- end of link list -->
 
     <!-- joint list -->
@@ -208,5 +224,14 @@
       <parent link="${prefix}base"/>
       <child link="${prefix}base_link"/>
     </joint>
+    
+    
+	<!-- Attach Kinect to the robot end effector -->
+	<joint type="fixed" name="camera_joint">
+		<origin xyz="0.0 0.0 0.02" rpy="0.0 0.0 0.0"/>
+		<child link="camera_link"/>
+		<parent link="${prefix}tool0"/>
+	</joint>
+    
   </xacro:macro>
 </robot>

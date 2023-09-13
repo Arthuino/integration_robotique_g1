@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<launch>
+        <!-- overwriting these args -->
+        <arg name="debug" default="false" />
+        <arg name="gui" default="true" />
+        <arg name="pause" default="false" />
+        <arg name="world" default="$(find camera)/world/camera.world" />
+
+        <!-- include gazebo_ros launcher -->
+        <include file="$(find gazebo_ros)/launch/empty_world.launch">
+                <arg name="world_name" value="$(arg world)" />
+                <arg name="debug" value="$(arg debug)" />
+                <arg name="gui" value="$(arg gui)" />
+                <arg name="paused" value="$(arg pause)" />
+                <arg name="use_sim_time" value="true" />
+        </include>
+        
+        <!--<param name="camera_description" command="$(find xacro)/xacro -inorder '$(find camera)/urdf/camera.xacro'" />-->
+        
+        <param name="camera_description" command="xacro  '$(find camera)/urdf/camera.xacro'" />
+        
+        <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param camera_description -urdf -model camera" />
+        
+        
+</launch>
