@@ -46,3 +46,9 @@ test de gazebo
 ```bash
 roslaunch hc10_moveit_config demo_gazebo.launch
 ```
+
+Robot + environement de la cellule
+
+```bash
+roslaunch hc10_moveit_config demo_environment.launch
+```
