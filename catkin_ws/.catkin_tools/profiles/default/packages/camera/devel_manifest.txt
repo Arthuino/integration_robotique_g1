@@ -1,0 +1,5 @@
+camera
+/home/etudiant/Documents/integration_robotique_g1/catkin_ws/devel/.private/camera/cmake.lock /home/etudiant/Documents/integration_robotique_g1/catkin_ws/devel/./cmake.lock
+/home/etudiant/Documents/integration_robotique_g1/catkin_ws/devel/.private/camera/share/camera/cmake/cameraConfig.cmake /home/etudiant/Documents/integration_robotique_g1/catkin_ws/devel/share/camera/cmake/cameraConfig.cmake
+/home/etudiant/Documents/integration_robotique_g1/catkin_ws/devel/.private/camera/share/camera/cmake/cameraConfig-version.cmake /home/etudiant/Documents/integration_robotique_g1/catkin_ws/devel/share/camera/cmake/cameraConfig-version.cmake
+/home/etudiant/Documents/integration_robotique_g1/catkin_ws/devel/.private/camera/lib/pkgconfig/camera.pc /home/etudiant/Documents/integration_robotique_g1/catkin_ws/devel/lib/pkgconfig/camera.pc
