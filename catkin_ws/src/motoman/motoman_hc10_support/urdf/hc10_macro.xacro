@@ -204,7 +204,7 @@
     <!-- ROS base_link to Robot Manufacturer World Coordinates transform -->
     <link name="${prefix}base" />
     <joint name="${prefix}base_link-base" type="fixed">
-      <origin xyz="0 0 0.275" rpy="0 0 0"/>
+      <origin xyz="0 0 0.02" rpy="0 0 0"/> <!-- Z was 0.275, changed to 0.02 -->
       <parent link="${prefix}base"/>
       <child link="${prefix}base_link"/>
     </joint>
