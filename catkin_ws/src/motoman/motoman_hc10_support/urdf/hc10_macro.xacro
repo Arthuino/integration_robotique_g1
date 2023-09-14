@@ -9,10 +9,10 @@
     
     <link name="${prefix}base_link">
     	<inertial>
-	   	<origin xyz="0 0 0" rpy="0 0 0"/>
-	   	<mass value="0.1"/>
-	   	<inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
-	</inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
+	    </inertial>
       <visual>
         <geometry>
           <mesh filename="package://motoman_hc10_support/meshes/hc10/visual/base_link.dae"/>
@@ -27,10 +27,10 @@
     </link>
     <link name="${prefix}link_1_s">
     	<inertial>
-	   	<origin xyz="0 0 0" rpy="0 0 0"/>
-	   	<mass value="0.1"/>
-	   	<inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
-	</inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
+	    </inertial>
       <visual>
         <geometry>
           <mesh filename="package://motoman_hc10_support/meshes/hc10/visual/link_1_s.dae"/>
@@ -45,10 +45,10 @@
     </link>
     <link name="${prefix}link_2_l">
     	<inertial>
-	   	<origin xyz="0 0 0" rpy="0 0 0"/>
-	   	<mass value="0.1"/>
-	   	<inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
-	</inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
+	    </inertial>
       <visual>
         <geometry>
           <mesh filename="package://motoman_hc10_support/meshes/hc10/visual/link_2_l.dae"/>
@@ -63,10 +63,10 @@
     </link>
     <link name="${prefix}link_3_u">
     	<inertial>
-	   	<origin xyz="0 0 0" rpy="0 0 0"/>
-	   	<mass value="0.1"/>
-	   	<inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
-	</inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
+	    </inertial>
       <visual>
         <geometry>
           <mesh filename="package://motoman_hc10_support/meshes/hc10/visual/link_3_u.dae"/>
@@ -81,10 +81,10 @@
     </link>
     <link name="${prefix}link_4_r">
     	<inertial>
-	   	<origin xyz="0 0 0" rpy="0 0 0"/>
-	   	<mass value="0.1"/>
-	   	<inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
-	</inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
+	    </inertial>
       <visual>
         <geometry>
           <mesh filename="package://motoman_hc10_support/meshes/hc10/visual/link_4_r.dae"/>
@@ -99,10 +99,10 @@
     </link>
     <link name="${prefix}link_5_b">
     	<inertial>
-	   	<origin xyz="0 0 0" rpy="0 0 0"/>
-	   	<mass value="0.1"/>
-	   	<inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
-	</inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
+	    </inertial>
       <visual>
         <geometry>
           <mesh filename="package://motoman_hc10_support/meshes/hc10/visual/link_5_b.dae"/>
@@ -117,10 +117,10 @@
     </link>
     <link name="${prefix}link_6_t">
     	<inertial>
-	   	<origin xyz="0 0 0" rpy="0 0 0"/>
-	   	<mass value="0.1"/>
-	   	<inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
-	</inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
+	    </inertial>
       <visual>
         <geometry>
           <mesh filename="package://motoman_hc10_support/meshes/hc10/visual/link_6_t.dae"/>
@@ -135,17 +135,17 @@
     </link>
     <link name="${prefix}tool0"/>
     	<inertial>
-	   	<origin xyz="0 0 0" rpy="0 0 0"/>
-	   	<mass value="0.1"/>
-	   	<inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
-	</inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
+	    </inertial>
     <!-- end of link list -->
 
     <!-- joint list -->
     <joint name="world_fixed" type="fixed">
-	   <parent link="world"/>
-	   <child link="${prefix}base"/>
-	</joint>
+	    <parent link="world"/>
+	    <child link="${prefix}base"/>
+	  </joint>
     <joint name="${prefix}joint_1_s" type="revolute">
     	<dynamics damping="1"/>
       <parent link="${prefix}base_link"/>
