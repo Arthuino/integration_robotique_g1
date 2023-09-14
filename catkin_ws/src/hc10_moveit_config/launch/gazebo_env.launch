@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="paused" default="false"/>
+  <arg name="gazebo_gui" default="true"/>
+
+  <!-- unpause only after loading robot model -->
+  <arg name="unpause" value="$(eval '' if arg('paused') else '-unpause')" />
+
+
+
+  <!-- === Step 1 - Create empty world === -->
+
+  <!-- startup simulated world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="worlds/empty.world"/>
+    <arg name="paused" value="true"/>
+    <arg name="gui" value="$(arg gazebo_gui)"/>
+  </include>
+
+
+
+  <!-- === Step 2 - Import environment === -->
+
+  <!-- add robot environment to simulation -->
+  <arg name="env_pose" value="-x 0 -y 0 -z 0.0" />
+  <arg name="env_description" value="$(find hc10_moveit_config)/config/env_hc10/model.sdf" />
+
+  <node 
+    name="environment_spawn_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" 
+    args="-sdf -file $(arg env_description) -model environment $(arg env_pose)"
+    />
+
+
+
+  <!-- === Step 3 - Import robot === -->
+
+  <arg name="robot_pose" value="-x -0.3 -y -0.3 -z 0.64" />
+  <arg name="initial_joint_positions" doc="Initial joint configuration of the robot"
+       default=" -J joint_1_s 0 -J joint_2_l 0 -J joint_3_u 0 -J joint_4_r 0 -J joint_5_b 0 -J joint_6_t 0"/>
+  <!-- send robot urdf to param server -->
+  <param name="robot_description" command="xacro '$(find motoman_hc10_support)/urdf/hc10.xacro'" />
+  
+  <node 
+    name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+    args="-urdf -param robot_description -model robot $(arg unpause) $(arg robot_pose) $(arg initial_joint_positions)"
+    />
+
+
+
+  <!-- === Step 4 - ??? === -->
+
+  <!-- Load joint controller parameters for Gazebo -->
+  <rosparam file="$(find hc10_moveit_config)/config/gazebo_controllers.yaml" />
+  <!-- Spawn Gazebo ROS controllers -->
+  <node name="gazebo_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_state_controller" />
+  <!-- Load ROS controllers -->
+  <include file="$(dirname)/ros_controllers.launch"/>
+
+</launch>
