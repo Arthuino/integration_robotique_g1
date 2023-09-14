@@ -8,7 +8,7 @@
   <arg name="paused" default="false"/>
 
   <!-- launch the gazebo simulator and spawn the robot & environment -->
-  <include file="$(dirname)/gazebo.launch" >
+  <include file="$(dirname)/gazebo_env.launch" >
     <arg name="paused" value="$(arg paused)"/>
     <arg name="gazebo_gui" value="$(arg gazebo_gui)"/>
   </include>
