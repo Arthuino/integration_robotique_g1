@@ -45,6 +45,8 @@
 from __future__ import print_function
 from six.moves import input
 
+import tf
+import numpy as np
 import sys
 import copy
 import rospy
@@ -175,58 +177,48 @@ class MoveGroupPythonInterfaceTutorial(object):
     def cube_scan(self, length, offset):
         poses = []
 
+        # for each corner
+        for i in range(2):
+            for j in range(2):
+                for k in range(2):
+                    pose = geometry_msgs.msg.Pose()
 
-        pose = geometry_msgs.msg.Pose()        
-        pose.position.y = offset[1]  # down left front
-        pose.position.z = offset[2]  # down left front
-        pose.position.x = offset[0]  # down left front
-        poses.append(pose)
+                    # compute desired position
+                    pose.position.x = -length/2 + length * i
+                    pose.position.y = -length/2 + length * j
+                    pose.position.z = -length/2 + length * k 
+                    vec_z = -np.array([pose.position.x, pose.position.y, pose.position.z]) / np.linalg.norm(np.array([pose.position.x, pose.position.y, pose.position.z]))
 
-        pose = geometry_msgs.msg.Pose()
-        pose.position.x = offset[0] + length  # down right front
-        pose.position.y = offset[1]  # down right front
-        pose.position.z = offset[2]  # down right front
-        poses.append(pose)
+                    # create rotation matrix
+                    vec_x0 = 1
+                    vec_x1 = 1
+                    vec_x = np.array([vec_x0, vec_x1, -(vec_z[0]*vec_x0 + vec_z[1]*vec_x1)/vec_z[2]])
+                    vec_x = vec_x / np.linalg.norm(vec_x)
+                    vec_y = np.cross(vec_z, vec_x)
+                    rot = np.array([vec_x, vec_y, vec_z])
+                    rot_extended = np.eye(4)
+                    rot_extended[0:3, 0:3] = rot.T
 
-        pose = geometry_msgs.msg.Pose()
-        pose.position.x = offset[0] + length  # down right back
-        pose.position.y = offset[1] + length # down right back
-        pose.position.z = offset[2]  # down right back
-        poses.append(pose)
+                    print(vec_x, vec_z, rot_extended)
 
-        pose = geometry_msgs.msg.Pose()
-        pose.position.x = offset[0]  # down left back
-        pose.position.y = offset[1] + length # down left back
-        pose.position.z = offset[2]  # down left back
-        poses.append(pose)
+                    # convert rot to quat
+                    quat = tf.transformations.quaternion_from_matrix(rot_extended)
 
-        pose = geometry_msgs.msg.Pose()
-        pose.position.x = offset[0]  # up left back
-        pose.position.y = offset[1] + length # up left back
-        pose.position.z = offset[2] + length  # up left back
-        poses.append(pose)
+                    print(quat)
 
-        pose = geometry_msgs.msg.Pose()
-        pose.position.x = offset[0] + length  # up right back
-        pose.position.y = offset[1] + length # up right back
-        pose.position.z = offset[2] + length  # up right back
-        poses.append(pose)
+                    # get quaternion
+                    pose.orientation.x = quat[0]
+                    pose.orientation.y = quat[1]
+                    pose.orientation.z = quat[2]
+                    pose.orientation.w = quat[3]
 
-        pose = geometry_msgs.msg.Pose()
-        pose.position.x = offset[0] + length  # up right front
-        pose.position.y = offset[1]  # up right front
-        pose.position.z = offset[2] + length  # up right front
-        poses.append(pose)
+                    # apply offset on position
+                    pose.position.x += offset[0]
+                    pose.position.y += offset[1]
+                    pose.position.z += offset[2] 
 
+                    poses.append(pose)
 
-        pose = geometry_msgs.msg.Pose()
-        pose.position.x = offset[0]  # up left front
-        pose.position.y = offset[1]  # up left front
-        pose.position.z = offset[2] + length # up left front
-        poses.append(pose)
-
-        
-        pose = geometry_msgs.msg.Pose()
         return poses
 
     def add_box(self, timeout=4):
@@ -464,7 +456,7 @@ def main():
         print("")
         scan_traj = MoveGroupPythonInterfaceTutorial()
 
-        poses = scan_traj.cube_scan(0.5, [0.3, 0.3, 0.3])
+        poses = scan_traj.cube_scan(0.5, [0.5, 0.5, 0.5])
         for pose in poses:
             print(pose)
             scan_traj.go_to_pose_goal_by_pose(pose)
