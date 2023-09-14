@@ -199,12 +199,8 @@ class MoveGroupPythonInterfaceTutorial(object):
                     rot_extended = np.eye(4)
                     rot_extended[0:3, 0:3] = rot.T
 
-                    print(vec_x, vec_z, rot_extended)
-
                     # convert rot to quat
                     quat = tf.transformations.quaternion_from_matrix(rot_extended)
-
-                    print(quat)
 
                     # get quaternion
                     pose.orientation.x = quat[0]
@@ -456,7 +452,7 @@ def main():
         print("")
         scan_traj = MoveGroupPythonInterfaceTutorial()
 
-        poses = scan_traj.cube_scan(0.5, [0.5, 0.5, 0.5])
+        poses = scan_traj.cube_scan(0.35, [0.25 + 0.35/2, 0.25 + 0.35/2, 0.35/2+0.1])
         for pose in poses:
             print(pose)
             scan_traj.go_to_pose_goal_by_pose(pose)
