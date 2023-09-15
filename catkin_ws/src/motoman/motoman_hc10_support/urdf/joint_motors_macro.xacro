@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:macro name="hc10_gazebo" params="prefix">
+        <xacro:macro name="arm_gazebo" params="link">
+            <gazebo reference="${link}">
+                <material>Gazebo/White</material>
+                <mu1>0.2</mu1>
+                <mu2>0.2</mu2>
+            </gazebo>
+        </xacro:macro>
+
+        <xacro:macro name="camera_gazebo" params="link">
+            <gazebo reference="${link}">
+                <material>Gazebo/Grey</material>
+                <mu1>0.2</mu1>
+                <mu2>0.2</mu2>
+            </gazebo>
+        </xacro:macro>
+
+        <xacro:arm_gazebo link="${prefix}base_link"/>
+        <xacro:arm_gazebo link="${prefix}link_1_s"/>
+        <xacro:arm_gazebo link="${prefix}link_2_l"/>
+        <xacro:arm_gazebo link="${prefix}link_3_u"/>
+        <xacro:arm_gazebo link="${prefix}link_4_r"/>
+        <xacro:arm_gazebo link="${prefix}link_5_b"/>
+        <xacro:arm_gazebo link="${prefix}link_6_t"/>
+        <!-- <xacro:arm_gazebo link="${prefix}tool0"/> -->
+        <!-- <xacro:camera_gazebo link="camera"/> -->
+    </xacro:macro>
+
+    <xacro:macro name="hc10_control" params="prefix">
+        <xacro:macro name="joint_control" params="transmission joint motor">
+            <transmission name="${transmission}">
+                <type>transmission_interface/SimpleTransmission</type>
+                <joint name="${joint}">
+                    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+                </joint>
+                <actuator name="${motor}">
+                    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+                    <mechanicalReduction>1</mechanicalReduction>
+                </actuator>
+            </transmission>
+        </xacro:macro>
+
+        <xacro:joint_control transmission="${prefix}_tran_1" joint="${prefix}joint_1_s" motor="${prefix}_motor_1"/>
+        <xacro:joint_control transmission="${prefix}_tran_2" joint="${prefix}joint_2_l" motor="${prefix}_motor_2"/>
+        <xacro:joint_control transmission="${prefix}_tran_3" joint="${prefix}joint_3_u" motor="${prefix}_motor_3"/>
+        <xacro:joint_control transmission="${prefix}_tran_4" joint="${prefix}joint_4_r" motor="${prefix}_motor_4"/>
+        <xacro:joint_control transmission="${prefix}_tran_5" joint="${prefix}joint_5_b" motor="${prefix}_motor_5"/>
+        <xacro:joint_control transmission="${prefix}_tran_6" joint="${prefix}joint_6_t" motor="${prefix}_motor_6"/>
+
+        <gazebo>
+            <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
+        </gazebo>
+    </xacro:macro>
+
+</robot>
