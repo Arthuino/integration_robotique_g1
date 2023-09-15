@@ -15,7 +15,7 @@
       </collision>
       <visual name="visual">
         <geometry>
-          <mesh filename="package://camera/urdf/kinect_ros/meshes/kinect.dae" scale="1 1 1"/>
+          <mesh filename="package://motoman_hc10_support/meshes/kinect/kinect.dae" scale="1 1 1"/>
         </geometry>
       </visual>
     </link>
