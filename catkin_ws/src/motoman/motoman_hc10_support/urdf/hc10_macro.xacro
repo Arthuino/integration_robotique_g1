@@ -2,6 +2,15 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:macro name="motoman_hc10" params="prefix">
     <xacro:include filename="$(find motoman_resources)/urdf/common_materials.xacro"/>
+    
+    <xacro:include filename="$(find camera)/urdf/kinect_ros/model_macro.xacro"/>
+  	<xacro:kinect parent_link="${prefix}tool0"/>
+
+    <gazebo>
+	  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+	    <robotNamespace>/MYROBOT</robotNamespace>
+	  </plugin>
+	  </gazebo>
 
     <!-- link list -->
     
@@ -208,5 +217,7 @@
       <parent link="${prefix}base"/>
       <child link="${prefix}base_link"/>
     </joint>
+    
+    
   </xacro:macro>
 </robot>

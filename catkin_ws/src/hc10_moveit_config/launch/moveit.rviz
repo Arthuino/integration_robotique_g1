@@ -122,7 +122,7 @@ Visualization Manager:
         Robot Color: 150; 50; 150
         Show Robot Collision: false
         Show Robot Visual: true
-        Show Trail: false
+        Show Trail: falsewol
         State Display Time: 0.05 s
         Trail Step Size: 1
         Trajectory Topic: move_group/display_planned_path
@@ -219,7 +219,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: world
+    Fixed Frame: link_kinect
     Frame Rate: 30
   Name: root
   Tools:
@@ -248,7 +248,7 @@ Visualization Manager:
       Name: Current View
       Near Clip Distance: 0.009999999776482582
       Pitch: 0.7349998950958252
-      Target Frame: world
+      Target Frame: link_kinect
       Yaw: 0.05176462233066559
     Saved: ~
 Window Geometry:
