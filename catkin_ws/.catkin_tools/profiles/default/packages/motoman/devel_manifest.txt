@@ -1,2 +1,0 @@
-motoman/motoman
-/home/etudiant/Documents/integration_robotique_g1/catkin_ws/devel/.private/motoman/cmake.lock /home/etudiant/Documents/integration_robotique_g1/catkin_ws/devel/./cmake.lock
