@@ -22,7 +22,7 @@
 		  
     <gazebo reference="link_kinect">
       <sensor name="kinect_camera" type="depth">
-          <update_rate>20</update_rate>
+          <update_rate>1000</update_rate>
           <camera>
               <horizontal_fov>1.047198</horizontal_fov>
               <image>
@@ -59,7 +59,7 @@
 
 		  <!-- Attach Kinect to the robot end effector -->
 		<joint type="fixed" name="camera_joint">
-			<origin xyz="0.0 0.0 0.07" rpy="0.0 -1.57 3.14"/>
+			<origin xyz="0.0 0.0 0.07" rpy="0.0 -1.57 1.57"/>
 			<child link="link_kinect"/>
 			<parent link="${parent_link}"/>
 		</joint>
