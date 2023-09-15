@@ -49,8 +49,14 @@ roslaunch hc10_moveit_config demo_gazebo.launch
 
 Robot + environement de la cellule
 
+- Avec object simple (gourde)
 ```bash
-roslaunch hc10_moveit_config demo_environment.launch
+roslaunch hc10_moveit_config demo_environment.launch obj_to_scan:=bottle obj_x:=0.64
+```
+
+- Avec object complexe (champignon)
+```bash
+roslaunch hc10_moveit_config demo_environment.launch obj_to_scan:=mushroom obj_x:=0.71
 ```
 
 Lance Rviz et Gazebo et tourne en fond en attendant les coordonnées de trajectoire
