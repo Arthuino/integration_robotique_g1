@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="scan_object" params="model scale">
+
+    <link name="${model}">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="0.03" ixy="0.03" ixz="0.03" iyy="0.0" iyz="0.0" izz="0.0"/>
+	    </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://scan_objects/meshes/visual/${model}.dae" scale="${scale}"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://scan_objects/meshes/collision/${model}.stl" scale="${scale}"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <gazebo>
+      <static>1</static>
+    </gazebo>
+
+  </xacro:macro>
+</robot>

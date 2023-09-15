@@ -1,0 +1,8 @@
+<launch>
+
+  <include file="$(dirname)/demo_environment.launch" >
+    <arg name="obj_to_scan" value="mushroom" />
+    <arg name="obj_z" value="0.71" />
+  </include>
+
+</launch>

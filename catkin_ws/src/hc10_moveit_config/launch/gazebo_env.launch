@@ -41,13 +41,29 @@
   <param name="robot_description" command="xacro '$(find motoman_hc10_support)/urdf/hc10.xacro'" />
   
   <node 
-    name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+    name="robot_spawn_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
     args="-urdf -param robot_description -model robot $(arg unpause) $(arg robot_pose) $(arg initial_joint_positions)"
+    />
+
+  
+
+  <!-- === Step 4 - Import object to scan === -->
+
+  <arg name="obj_to_scan" default="bottle" />
+  <arg name="obj_z" default="0.64" />
+
+  <arg name="obj_pose" value="-x 0 -y 0 -z $(arg obj_z) -R 1.57 -P 0 -Y 0" />
+  <!-- send robot urdf to param server -->
+  <param name="obj_description" command="xacro '$(find scan_objects)/urdf/$(arg obj_to_scan).xacro'" />
+  
+  <node 
+    name="obj_spawn_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+    args="-urdf -param obj_description -model scan_object $(arg unpause) $(arg obj_pose)"
     />
 
 
 
-  <!-- === Step 4 - ??? === -->
+  <!-- === Step 5 - Load controllers for the robot === -->
 
   <!-- Load joint controller parameters for Gazebo -->
   <rosparam file="$(find hc10_moveit_config)/config/gazebo_controllers.yaml" />

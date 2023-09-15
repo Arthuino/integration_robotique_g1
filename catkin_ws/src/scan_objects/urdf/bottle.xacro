@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find scan_objects)/urdf/scan_object.xacro" />
+
+  <xacro:scan_object model="bottle" scale="0.002 0.002 0.002" />
+  
+</robot>

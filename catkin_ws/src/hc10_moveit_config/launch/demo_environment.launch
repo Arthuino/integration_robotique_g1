@@ -7,10 +7,18 @@
   <arg name="gazebo_gui" default="true"/>
   <arg name="paused" default="false"/>
 
+  <!-- Desired object to scan -->
+  <arg name="obj_to_scan" default="bottle" />
+  <arg name="obj_z" default="0.64" /> <!-- 0.71 for mushroom, 0.64 for bottle -->
+
+
+
   <!-- launch the gazebo simulator and spawn the robot & environment -->
   <include file="$(dirname)/gazebo_env.launch" >
     <arg name="paused" value="$(arg paused)"/>
     <arg name="gazebo_gui" value="$(arg gazebo_gui)"/>
+    <arg name="obj_to_scan" value="$(arg obj_to_scan)" />
+    <arg name="obj_z" value="$(arg obj_z)" />
   </include>
 
   <include file="$(dirname)/demo_env.launch" pass_all_args="true">
