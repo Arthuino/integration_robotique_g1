@@ -1,0 +1,6 @@
+<launch>
+
+  <node name="scan_traj" pkg="hc10_scan_traj" type="scan_traj.py" respawn="false" output="screen">
+  </node>
+
+</launch>
