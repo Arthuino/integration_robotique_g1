@@ -7,6 +7,9 @@
   <arg name="gazebo_gui" default="true"/>
   <arg name="paused" default="false"/>
 
+  <!-- scene file path option -->
+  <arg name="scene_file" default="$(find hc10_moveit_config)/config/env_hc10/env.scene"/>
+
   <!-- launch the gazebo simulator and spawn the robot & environment -->
   <include file="$(dirname)/gazebo_env.launch" >
     <arg name="paused" value="$(arg paused)"/>
@@ -18,5 +21,8 @@
     <arg name="load_robot_description" value="false" />
     <arg name="moveit_controller_manager" value="ros_control" />
   </include>
+
+  <!-- load scene into moveit -->
+  <node name = "moveit_publish_scene_from_text" pkg= "moveit_ros_planning" type = "moveit_publish_scene_from_text" args= "$(arg scene_file)"/>
 
 </launch>

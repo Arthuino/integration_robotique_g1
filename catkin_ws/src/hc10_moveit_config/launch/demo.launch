@@ -23,6 +23,9 @@
   <arg name="use_gui" default="false" />
   <arg name="use_rviz" default="true" />
 
+  <!-- scene file path option -->
+  <arg name="scene_file" default="$(find hc10_moveit_config)/config/env_hc10/env.scene"/> 
+
   <!-- If needed, broadcast static tf for robot root -->
 
 
@@ -64,5 +67,8 @@
   <include file="$(dirname)/default_warehouse_db.launch" if="$(arg db)">
     <arg name="moveit_warehouse_database_path" value="$(arg db_path)"/>
   </include>
+
+  <!-- load scene into moveit -->
+  <node name = "moveit_publish_scene_from_text" pkg= "moveit_ros_planning" type = "moveit_publish_scene_from_text" args= "$(arg scene_file)"/>
 
 </launch>
