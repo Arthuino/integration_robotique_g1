@@ -52,3 +52,15 @@ Robot + environement de la cellule
 ```bash
 roslaunch hc10_moveit_config demo_environment.launch
 ```
+
+Lance Rviz et Gazebo et tourne en fond en attendant les coordonnées de trajectoire
+
+```bash
+roslaunch hc10_moveit_config demo_environment.launch 
+```
+
+Envoie les coordonnées à atteindre pour le robot via le script Python
+
+```bash
+roslaunch hc10_scan_traj scan_traj.launch
+```
