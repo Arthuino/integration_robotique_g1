@@ -2,4 +2,8 @@
 <robot name="motoman_hc10" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find motoman_hc10_support)/urdf/hc10_macro.xacro" />
   <xacro:motoman_hc10 prefix=""/>
+
+  <xacro:include filename="$(find motoman_hc10_support)/urdf/joint_motors_macro.xacro"/>
+  <xacro:hc10_gazebo prefix="" />
+  <xacro:hc10_control prefix="" />
 </robot>
