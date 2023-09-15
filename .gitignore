@@ -50,8 +50,7 @@ qtcreator-*
 # Catkin custom files
 CATKIN_IGNORE
 **/.catkin_tools/*
-devel_collisions.txt
-devel_manifest.txt
+
 
 #Ide
 .vscode
